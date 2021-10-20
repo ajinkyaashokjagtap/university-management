@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="60">
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout>
+				<!-- SWITCH TO THIS IF YOU DON'T WANT HIGHLIGHTED LINES -->
+				<pattern>%date{ISO8601} [%-5level] [%t] [%class] [%X] -
+					%msg%n%throwable</pattern>
+
+				<!-- SWITCH TO THIS IF YOU DON'T WANT HIGHLIGHTED LINES -->
+				<!--<pattern>%highlight{%date{ISO8601} [%-5level] [%t] [%class] - %msg%n%throwable}{FATAL=white, 
+					ERROR=red, WARN=blue, INFO=black, DEBUG=green, TRACE=blue}</pattern> -->
+			</PatternLayout>
+		</Console>
+	</Appenders>
+
+	<Loggers>
+		<Logger name="com.yer" level="INFO" additivity="false">
+			<Appender-ref ref="Console" level="INFO" />
+		</Logger>
+	</Loggers>
+</Configuration>

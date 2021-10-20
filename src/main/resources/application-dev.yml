@@ -1,0 +1,45 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+  application:
+    name: university-management
+
+  # Flyway if enable hibernate properties ddl-auto will be validate only, if not enable then it can be create-drop etc.   
+  flyway:
+    baseline-on-migrate: true
+    enabled: true
+    baseline-version: 0
+    table: flyway_schema_history_universitymanagement
+    locations: classpath:db/migration/postgresql
+  main: 
+    allow-bean-definition-overriding: true 
+  # JPA Configuration
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show_sql: false
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  # Postgres Datasource        
+  datasource:
+     driverClassName: org.postgresql.Driver
+     url: jdbc:postgresql://localhost:5432/universitymanagement
+     username: postgres
+     password: root
+
+# Server configuration for dev, default port is 8080 if nothing is mentioned
+server:
+  port: 8084
+  servlet:
+    context-path: /university-management
+  
+# Logger settings  
+logging:
+  config: classpath:log4j2-spring-dev.xml
