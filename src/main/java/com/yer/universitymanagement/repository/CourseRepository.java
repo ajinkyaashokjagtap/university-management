@@ -6,4 +6,7 @@ import com.yer.universitymanagement.entity.Course;
 
 public interface CourseRepository extends JpaRepository<Course, Integer> {
 
+	public Course findByName(String courseName);
+	
+	public Course findById(int courseId);
 }
